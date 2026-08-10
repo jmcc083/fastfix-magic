@@ -512,7 +512,7 @@ function Index() {
             </p>
           </FadeIn>
           <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
-            {products.map((p, i) => (
+            {products.map((p) => (
               <FadeIn key={p.name}>
                 <figure className="group h-full overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
                   <img
