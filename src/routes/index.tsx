@@ -128,6 +128,21 @@ const services = [
     title: "Water Damage & Diagnostics",
     body: "Dropped it in water? Don't panic. Free diagnosis to assess what's recoverable before any work begins.",
   },
+  {
+    icon: Unlock,
+    title: "Unlocking, Sales & Accessories",
+    body: "Phone unlocking, software fixes, and a shop full of handsets, tablets and accessories — smartphones, tablets and laptops, sold and set up.",
+  },
+  {
+    icon: HardDrive,
+    title: "Software & Data Transfer",
+    body: "Operating system installs, virus removal and safe transfer of your photos, contacts and files between devices.",
+  },
+  {
+    icon: Printer,
+    title: "Printing, Scanning & Binding",
+    body: "Printing, laminating, scanning and bookbinding — walk-in document services right in The Diamond.",
+  },
 ];
 
 const pillars = [
