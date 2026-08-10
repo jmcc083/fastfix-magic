@@ -9,7 +9,11 @@ import {
   Droplets,
   Phone,
   Menu,
+  Printer,
+  Unlock,
+  HardDrive,
 } from "lucide-react";
+import logo from "@/assets/clones-tech-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -214,7 +218,8 @@ function Index() {
     <div className="min-h-screen bg-background">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/75 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-6 py-4">
-          <a href="#top" className="font-display text-[22px] font-bold tracking-[1px]">
+          <a href="#top" className="flex items-center gap-2.5 font-display text-[22px] font-bold tracking-[1px]">
+            <img src={logo.url} alt="Clones Tech Repair logo" className="size-9" />
             CLONES<span className="text-brand">TECH</span>
           </a>
 
@@ -459,7 +464,8 @@ function Index() {
         <div className="mx-auto max-w-[1180px] px-6">
           <div className="mb-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
             <div>
-              <p className="mb-4 font-display text-[22px] font-bold tracking-[1px]">
+              <p className="mb-4 flex items-center gap-2.5 font-display text-[22px] font-bold tracking-[1px]">
+                <img src={logo.url} alt="Clones Tech Repair logo" className="size-9" />
                 CLONES<span className="text-brand">TECH</span>
               </p>
               <p className="text-[14.5px] text-muted-foreground">
@@ -470,19 +476,19 @@ function Index() {
             <div>
               <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Visit / Contact</h4>
               <p className="mb-2.5 text-[14.5px] text-muted-foreground">
-                Shop Address, Clones, Co. Monaghan
+                The Diamond, Clones, Co. Monaghan, H23 W181, Ireland
               </p>
               <a
-                href="tel:+353"
+                href="tel:+353858734871"
                 className="mb-2.5 block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
               >
-                Phone Number
+                +353 85 873 4871
               </a>
               <a
-                href="mailto:hello@clonestech.ie"
+                href="mailto:clonestech@gmail.com"
                 className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
               >
-                hello@clonestech.ie
+                clonestech@gmail.com
               </a>
             </div>
             <div>
