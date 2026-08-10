@@ -47,11 +47,15 @@ export const Route = createFileRoute("/")({
             "Premium, honest device repair in Clones — phones, tablets, consoles and smart home systems.",
           address: {
             "@type": "PostalAddress",
+            streetAddress: "The Diamond",
             addressLocality: "Clones",
             addressRegion: "Co. Monaghan",
+            postalCode: "H23 W181",
             addressCountry: "IE",
           },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "4" },
+          telephone: "+353858734871",
+          email: "clonestech@gmail.com",
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "5" },
         }),
       },
     ],
@@ -215,10 +219,10 @@ const testimonials = [
 ];
 
 const trustStats = [
-  { value: "5.0", label: "Average Customer Rating" },
+  { value: "100%", label: "Recommended (5 reviews)" },
   { value: "30–60 min", label: "Typical Turnaround Time" },
-  { value: "100%", label: "Honest, No-Overcharge Pricing" },
-  { value: "All Ages", label: "Phones, Consoles & Smart Systems" },
+  { value: "The Diamond", label: "Clones, Co. Monaghan" },
+  { value: "Sales & Repair", label: "Phones · Tablets · Laptops" },
 ];
 
 const btnPrimary =
