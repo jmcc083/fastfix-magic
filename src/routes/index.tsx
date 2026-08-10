@@ -581,18 +581,19 @@ function Index() {
                 clonestech@gmail.com
               </a>
             </div>
-            <div>
-              <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Opening Hours</h4>
-              <p className="mb-2.5 text-[14.5px] text-muted-foreground">Mon – Fri: 9:00 – 17:30</p>
-              <p className="mb-2.5 text-[14.5px] text-muted-foreground">Saturday: 9:30 – 14:00</p>
-              <p className="mb-2.5 text-[14.5px] text-muted-foreground">Sunday: Closed</p>
-              <a
-                href="https://facebook.com"
-                className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
-              >
-                Find Us on Facebook →
-              </a>
-            </div>
+          <div>
+            <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Opening Hours</h4>
+            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Mon – Thu: 10:30 – 18:00</p>
+            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Fri: 10:30 – 12:30 · 14:00 – 18:00</p>
+            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Saturday: 10:30 – 18:00</p>
+            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Sunday: Closed</p>
+            <a
+              href="https://facebook.com"
+              className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
+            >
+              Find Us on Facebook →
+            </a>
+          </div>
           </div>
           <div className="flex flex-wrap justify-between gap-3 border-t border-border pt-6 text-[13px] text-muted-foreground">
             <p>© 2026 Clones Tech Repair. All rights reserved.</p>
