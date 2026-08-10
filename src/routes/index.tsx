@@ -57,6 +57,12 @@ export const Route = createFileRoute("/")({
           telephone: "+353858734871",
           email: "clonestech@gmail.com",
           aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "5" },
+          openingHoursSpecification: [
+            { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "10:30", closes: "18:00" },
+            { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "10:30", closes: "12:30" },
+            { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "14:00", closes: "18:00" },
+            { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:30", closes: "18:00" },
+          ],
         }),
       },
     ],
