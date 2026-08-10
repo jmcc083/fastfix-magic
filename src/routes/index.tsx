@@ -9,7 +9,11 @@ import {
   Droplets,
   Phone,
   Menu,
+  Printer,
+  Unlock,
+  HardDrive,
 } from "lucide-react";
+import logo from "@/assets/clones-tech-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -43,11 +47,15 @@ export const Route = createFileRoute("/")({
             "Premium, honest device repair in Clones — phones, tablets, consoles and smart home systems.",
           address: {
             "@type": "PostalAddress",
+            streetAddress: "The Diamond",
             addressLocality: "Clones",
             addressRegion: "Co. Monaghan",
+            postalCode: "H23 W181",
             addressCountry: "IE",
           },
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "4" },
+          telephone: "+353858734871",
+          email: "clonestech@gmail.com",
+          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "5" },
         }),
       },
     ],
@@ -124,6 +132,21 @@ const services = [
     title: "Water Damage & Diagnostics",
     body: "Dropped it in water? Don't panic. Free diagnosis to assess what's recoverable before any work begins.",
   },
+  {
+    icon: Unlock,
+    title: "Unlocking, Sales & Accessories",
+    body: "Phone unlocking, software fixes, and a shop full of handsets, tablets and accessories — smartphones, tablets and laptops, sold and set up.",
+  },
+  {
+    icon: HardDrive,
+    title: "Software & Data Transfer",
+    body: "Operating system installs, virus removal and safe transfer of your photos, contacts and files between devices.",
+  },
+  {
+    icon: Printer,
+    title: "Printing, Scanning & Binding",
+    body: "Printing, laminating, scanning and bookbinding — walk-in document services right in The Diamond.",
+  },
 ];
 
 const pillars = [
@@ -196,16 +219,16 @@ const testimonials = [
 ];
 
 const trustStats = [
-  { value: "5.0", label: "Average Customer Rating" },
+  { value: "100%", label: "Recommended (5 reviews)" },
   { value: "30–60 min", label: "Typical Turnaround Time" },
-  { value: "100%", label: "Honest, No-Overcharge Pricing" },
-  { value: "All Ages", label: "Phones, Consoles & Smart Systems" },
+  { value: "The Diamond", label: "Clones, Co. Monaghan" },
+  { value: "Sales & Repair", label: "Phones · Tablets · Laptops" },
 ];
 
 const btnPrimary =
-  "inline-flex items-center gap-2 rounded-full border border-transparent px-7 py-3.5 text-[15px] font-semibold text-primary-foreground [background:var(--gradient-gold)] [box-shadow:var(--shadow-gold)] transition-all duration-200 hover:-translate-y-0.5 hover:[box-shadow:var(--shadow-gold-lg)]";
+  "inline-flex items-center gap-2 rounded-full border border-transparent px-7 py-3.5 text-[15px] font-semibold text-primary-foreground [background:var(--gradient-brand)] [box-shadow:var(--shadow-brand)] transition-all duration-200 hover:-translate-y-0.5 hover:[box-shadow:var(--shadow-brand-lg)]";
 const btnOutline =
-  "inline-flex items-center gap-2 rounded-full border border-gold bg-transparent px-7 py-3.5 text-[15px] font-semibold text-gold-light transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent";
+  "inline-flex items-center gap-2 rounded-full border border-brand bg-transparent px-7 py-3.5 text-[15px] font-semibold text-brand-dark transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent";
 
 function Index() {
   const [open, setOpen] = useState(false);
@@ -214,8 +237,9 @@ function Index() {
     <div className="min-h-screen bg-background">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/75 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-6 py-4">
-          <a href="#top" className="font-display text-[22px] font-bold tracking-[1px]">
-            CLONES<span className="text-gold">TECH</span>
+          <a href="#top" className="flex items-center gap-2.5 font-display text-[22px] font-bold tracking-[1px]">
+            <img src={logo.url} alt="Clones Tech Repair logo" className="size-9" />
+            CLONES<span className="text-brand">TECH</span>
           </a>
 
           <div
@@ -228,7 +252,7 @@ function Index() {
                 key={l.label}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-muted-foreground transition-colors hover:text-gold-light"
+                className="text-muted-foreground transition-colors hover:text-brand-dark"
               >
                 {l.label}
               </a>
@@ -236,7 +260,7 @@ function Index() {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="#contact" className={`${btnOutline} hidden px-5 py-2.5 md:inline-flex`}>
+            <a href="tel:+353858734871" className={`${btnOutline} hidden px-5 py-2.5 md:inline-flex`}>
               <Phone className="size-4" />
               Call Now
             </a>
@@ -257,14 +281,14 @@ function Index() {
         <section className="hero-glow relative flex min-h-screen items-center overflow-hidden px-0 pb-24 pt-40">
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-[10%] -top-[20%] size-[600px] rounded-full blur-[40px] [background:radial-gradient(circle,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_70%)]"
+            className="pointer-events-none absolute -right-[10%] -top-[20%] size-[600px] rounded-full blur-[40px] [background:radial-gradient(circle,color-mix(in_oklab,var(--brand)_18%,transparent),transparent_70%)]"
           />
           <div className="container relative z-10 mx-auto max-w-[1180px] px-6">
             <div className="max-w-[720px]">
               <span className="eyebrow mb-3.5">Clones' Trusted Repair Specialists</span>
               <h1 className="mb-5 text-[clamp(38px,5.5vw,64px)] font-bold leading-[1.1]">
                 Precision Tech Repair, <br />
-                <span className="gold-text">Restored to Perfection.</span>
+                <span className="brand-text">Restored to Perfection.</span>
               </h1>
               <p className="mb-9 max-w-[560px] text-lg text-muted-foreground">
                 From smashed screens to smart intercom systems, Clones Tech Repair delivers premium,
@@ -274,17 +298,17 @@ function Index() {
                 <a href="#contact" className={btnPrimary}>
                   Book Your Repair
                 </a>
-                <a href="#contact" className={btnOutline}>
+                <a href="tel:+353858734871" className={btnOutline}>
                   Call the Shop
                 </a>
               </div>
               <div className="flex flex-wrap gap-7 text-sm text-muted-foreground">
                 <p>
-                  <strong className="font-semibold text-gold-light">★★★★★</strong> 5-star rated
+                  <strong className="font-semibold text-brand-dark">★★★★★</strong> 5-star rated
                   locally
                 </p>
                 <p>
-                  Repairs from <strong className="font-semibold text-gold-light">30 minutes</strong>
+                  Repairs from <strong className="font-semibold text-brand-dark">30 minutes</strong>
                 </p>
                 <p>Phones · Consoles · Smart Home Systems</p>
               </div>
@@ -297,7 +321,7 @@ function Index() {
           <div className="mx-auto flex max-w-[1180px] flex-wrap justify-between gap-5 px-6 text-center">
             {trustStats.map((s) => (
               <div key={s.label} className="min-w-[150px] flex-1">
-                <strong className="mb-1 block font-display text-[26px] text-gold-light">
+                <strong className="mb-1 block font-display text-[26px] text-brand-dark">
                   {s.value}
                 </strong>
                 <span className="text-[13px] text-muted-foreground">{s.label}</span>
@@ -323,9 +347,9 @@ function Index() {
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((s) => (
                 <FadeIn key={s.title}>
-                  <article className="h-full rounded-lg border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold">
-                    <div className="mb-5 flex size-13 items-center justify-center rounded-full border border-gold [background:linear-gradient(135deg,color-mix(in_oklab,var(--gold)_20%,transparent),color-mix(in_oklab,var(--gold)_5%,transparent))]">
-                      <s.icon className="size-6 text-gold-light" />
+                  <article className="h-full rounded-lg border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand">
+                    <div className="mb-5 flex size-13 items-center justify-center rounded-full border border-brand [background:linear-gradient(135deg,color-mix(in_oklab,var(--brand)_20%,transparent),color-mix(in_oklab,var(--brand)_5%,transparent))]">
+                      <s.icon className="size-6 text-brand-dark" />
                     </div>
                     <h3 className="mb-2.5 font-sans text-[19px] font-semibold">{s.title}</h3>
                     <p className="text-[14.5px] text-muted-foreground">{s.body}</p>
@@ -351,7 +375,7 @@ function Index() {
                 {pillars.map((p, i) => (
                   <FadeIn key={p.title}>
                     <div className="flex gap-4">
-                      <div className="flex size-11 shrink-0 items-center justify-center rounded-full border border-gold font-display text-[22px] text-gold">
+                      <div className="flex size-11 shrink-0 items-center justify-center rounded-full border border-brand font-display text-[22px] text-brand">
                         {i + 1}
                       </div>
                       <div>
@@ -367,7 +391,7 @@ function Index() {
                 <figure className="relative rounded-lg border border-border bg-card p-10">
                   <span
                     aria-hidden
-                    className="absolute left-6 top-2.5 font-display text-[80px] leading-none text-gold opacity-30"
+                    className="absolute left-6 top-2.5 font-display text-[80px] leading-none text-brand opacity-30"
                   >
                     &ldquo;
                   </span>
@@ -375,7 +399,7 @@ function Index() {
                     "Sam is fantastic at his job. Excellent service, and doesn't charge you over the
                     odds."
                   </blockquote>
-                  <figcaption className="text-sm font-semibold text-gold-light">
+                  <figcaption className="text-sm font-semibold text-brand-dark">
                     Dolores Collins <span className="font-normal text-muted-foreground">— verified customer</span>
                   </figcaption>
                 </figure>
@@ -397,7 +421,7 @@ function Index() {
               {steps.map((s) => (
                 <FadeIn key={s.num}>
                   <div>
-                    <div className="mb-2.5 font-display text-[38px] text-gold opacity-50">
+                    <div className="mb-2.5 font-display text-[38px] text-brand opacity-50">
                       {s.num}
                     </div>
                     <h4 className="mb-2 text-[17px] font-semibold">{s.title}</h4>
@@ -420,7 +444,7 @@ function Index() {
               {testimonials.map((t, i) => (
                 <FadeIn key={i}>
                   <figure className="h-full rounded-lg border border-border bg-card p-8">
-                    <div className="mb-3.5 tracking-[2px] text-gold">★★★★★</div>
+                    <div className="mb-3.5 tracking-[2px] text-brand">★★★★★</div>
                     <blockquote className="mb-4.5 text-[15.5px]">"{t.quote}"</blockquote>
                     <figcaption className="text-[13.5px] text-muted-foreground">
                       <strong className="font-semibold text-foreground">{t.who}</strong> — {t.when}
@@ -436,12 +460,12 @@ function Index() {
         <section className="pb-24">
           <div className="mx-auto max-w-[1180px] px-6">
             <FadeIn>
-              <div className="cta-band flex flex-col items-center gap-6 rounded-lg border border-gold px-8 py-11 text-center md:flex-row md:justify-between md:px-12 md:py-15 md:text-left">
+              <div className="cta-band flex flex-col items-center gap-6 rounded-lg border border-brand px-8 py-11 text-center md:flex-row md:justify-between md:px-12 md:py-15 md:text-left">
                 <h3 className="max-w-[480px] text-[clamp(22px,3vw,30px)] font-bold">
                   Don't live with a broken screen. Get it fixed today.
                 </h3>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <a href="#contact" className={btnPrimary}>
+                  <a href="tel:+353858734871" className={btnPrimary}>
                     <Phone className="size-4" />
                     Call the Shop
                   </a>
@@ -459,8 +483,9 @@ function Index() {
         <div className="mx-auto max-w-[1180px] px-6">
           <div className="mb-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
             <div>
-              <p className="mb-4 font-display text-[22px] font-bold tracking-[1px]">
-                CLONES<span className="text-gold">TECH</span>
+              <p className="mb-4 flex items-center gap-2.5 font-display text-[22px] font-bold tracking-[1px]">
+                <img src={logo.url} alt="Clones Tech Repair logo" className="size-9" />
+                CLONES<span className="text-brand">TECH</span>
               </p>
               <p className="text-[14.5px] text-muted-foreground">
                 Premium, honest device repair in the heart of Clones. Phones, tablets, consoles and
@@ -468,31 +493,31 @@ function Index() {
               </p>
             </div>
             <div>
-              <h4 className="mb-4 text-[15px] font-semibold text-gold-light">Visit / Contact</h4>
+              <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Visit / Contact</h4>
               <p className="mb-2.5 text-[14.5px] text-muted-foreground">
-                Shop Address, Clones, Co. Monaghan
+                The Diamond, Clones, Co. Monaghan, H23 W181, Ireland
               </p>
               <a
-                href="tel:+353"
-                className="mb-2.5 block text-[14.5px] text-muted-foreground transition-colors hover:text-gold-light"
+                href="tel:+353858734871"
+                className="mb-2.5 block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
               >
-                Phone Number
+                +353 85 873 4871
               </a>
               <a
-                href="mailto:hello@clonestech.ie"
-                className="block text-[14.5px] text-muted-foreground transition-colors hover:text-gold-light"
+                href="mailto:clonestech@gmail.com"
+                className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
               >
-                hello@clonestech.ie
+                clonestech@gmail.com
               </a>
             </div>
             <div>
-              <h4 className="mb-4 text-[15px] font-semibold text-gold-light">Opening Hours</h4>
+              <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Opening Hours</h4>
               <p className="mb-2.5 text-[14.5px] text-muted-foreground">Mon – Fri: 9:00 – 17:30</p>
               <p className="mb-2.5 text-[14.5px] text-muted-foreground">Saturday: 9:30 – 14:00</p>
               <p className="mb-2.5 text-[14.5px] text-muted-foreground">Sunday: Closed</p>
               <a
                 href="https://facebook.com"
-                className="block text-[14.5px] text-muted-foreground transition-colors hover:text-gold-light"
+                className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
               >
                 Find Us on Facebook →
               </a>
