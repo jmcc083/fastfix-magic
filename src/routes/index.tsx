@@ -233,6 +233,16 @@ const trustStats = [
   { value: "Sales & Repair", label: "Phones · Tablets · Laptops" },
 ];
 
+const openingHours = [
+  { day: "Monday", hours: "10:30 – 18:00" },
+  { day: "Tuesday", hours: "10:30 – 18:00" },
+  { day: "Wednesday", hours: "10:30 – 18:00" },
+  { day: "Thursday", hours: "10:30 – 18:00" },
+  { day: "Friday", hours: "10:30 – 12:30 · 14:00 – 18:00" },
+  { day: "Saturday", hours: "10:30 – 18:00" },
+  { day: "Sunday", hours: "Closed" },
+];
+
 const btnPrimary =
   "inline-flex items-center gap-2 rounded-full border border-transparent px-7 py-3.5 text-[15px] font-semibold text-primary-foreground [background:var(--gradient-brand)] [box-shadow:var(--shadow-brand)] transition-all duration-200 hover:-translate-y-0.5 hover:[box-shadow:var(--shadow-brand-lg)]";
 const btnOutline =
