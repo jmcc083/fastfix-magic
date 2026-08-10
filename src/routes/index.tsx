@@ -14,6 +14,7 @@ import {
   HardDrive,
 } from "lucide-react";
 import logo from "@/assets/clones-tech-logo.png.asset.json";
+import shopFront from "@/assets/clones-tech-shop.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -56,6 +57,12 @@ export const Route = createFileRoute("/")({
           telephone: "+353858734871",
           email: "clonestech@gmail.com",
           aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "5" },
+          openingHoursSpecification: [
+            { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "10:30", closes: "18:00" },
+            { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "10:30", closes: "12:30" },
+            { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "14:00", closes: "18:00" },
+            { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:30", closes: "18:00" },
+          ],
         }),
       },
     ],
@@ -98,6 +105,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Why Us", href: "#why" },
   { label: "Reviews", href: "#reviews" },
+  { label: "Visit Us", href: "#visit" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -223,6 +231,16 @@ const trustStats = [
   { value: "30–60 min", label: "Typical Turnaround Time" },
   { value: "The Diamond", label: "Clones, Co. Monaghan" },
   { value: "Sales & Repair", label: "Phones · Tablets · Laptops" },
+];
+
+const openingHours = [
+  { day: "Monday", hours: "10:30 – 18:00" },
+  { day: "Tuesday", hours: "10:30 – 18:00" },
+  { day: "Wednesday", hours: "10:30 – 18:00" },
+  { day: "Thursday", hours: "10:30 – 18:00" },
+  { day: "Friday", hours: "10:30 – 12:30 · 14:00 – 18:00" },
+  { day: "Saturday", hours: "10:30 – 18:00" },
+  { day: "Sunday", hours: "Closed" },
 ];
 
 const btnPrimary =
@@ -456,8 +474,61 @@ function Index() {
           </div>
         </section>
 
-        {/* CTA BAND */}
-        <section className="pb-24">
+      {/* VISIT US */}
+      <section id="visit" className="py-24">
+        <div className="mx-auto max-w-[1180px] px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <FadeIn>
+              <figure className="overflow-hidden rounded-lg border border-border shadow-sm">
+                <img
+                  src={shopFront.url}
+                  alt="Clones Tech Repair shop front at The Diamond, Clones"
+                  className="w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="border-t border-border bg-surface px-5 py-3 text-sm text-muted-foreground">
+                  Clones Tech Repair — The Diamond, Clones, Co. Monaghan
+                </figcaption>
+              </figure>
+            </FadeIn>
+
+            <div>
+              <FadeIn>
+                <span className="eyebrow mb-3.5">Visit the Shop</span>
+                <h2 className="mb-6 text-[clamp(28px,3.5vw,42px)] font-bold">
+                  Right in the heart of Clones.
+                </h2>
+                <p className="mb-8 text-base text-muted-foreground">
+                  Drop by The Diamond any day we're open. We're easy to find — just look for the
+                  bright Clones Tech signage on the main street.
+                </p>
+              </FadeIn>
+
+              <FadeIn>
+                <div className="overflow-hidden rounded-lg border border-border bg-card">
+                  <div className="grid grid-cols-2 border-b border-border bg-surface px-5 py-3 text-sm font-semibold text-brand-dark">
+                    <span>Day</span>
+                    <span>Hours</span>
+                  </div>
+                  {openingHours.map((row) => (
+                    <div
+                      key={row.day}
+                      className="grid grid-cols-2 border-b border-border px-5 py-3 text-sm last:border-0"
+                    >
+                      <span className="font-medium text-foreground">{row.day}</span>
+                      <span className="text-muted-foreground">{row.hours}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BAND */}
+      <section className="pb-24">
           <div className="mx-auto max-w-[1180px] px-6">
             <FadeIn>
               <div className="cta-band flex flex-col items-center gap-6 rounded-lg border border-brand px-8 py-11 text-center md:flex-row md:justify-between md:px-12 md:py-15 md:text-left">
@@ -510,18 +581,19 @@ function Index() {
                 clonestech@gmail.com
               </a>
             </div>
-            <div>
-              <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Opening Hours</h4>
-              <p className="mb-2.5 text-[14.5px] text-muted-foreground">Mon – Fri: 9:00 – 17:30</p>
-              <p className="mb-2.5 text-[14.5px] text-muted-foreground">Saturday: 9:30 – 14:00</p>
-              <p className="mb-2.5 text-[14.5px] text-muted-foreground">Sunday: Closed</p>
-              <a
-                href="https://facebook.com"
-                className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
-              >
-                Find Us on Facebook →
-              </a>
-            </div>
+          <div>
+            <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Opening Hours</h4>
+            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Mon – Thu: 10:30 – 18:00</p>
+            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Fri: 10:30 – 12:30 · 14:00 – 18:00</p>
+            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Saturday: 10:30 – 18:00</p>
+            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Sunday: Closed</p>
+            <a
+              href="https://facebook.com"
+              className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
+            >
+              Find Us on Facebook →
+            </a>
+          </div>
           </div>
           <div className="flex flex-wrap justify-between gap-3 border-t border-border pt-6 text-[13px] text-muted-foreground">
             <p>© 2026 Clones Tech Repair. All rights reserved.</p>
