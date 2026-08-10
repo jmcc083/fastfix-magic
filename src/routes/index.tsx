@@ -474,8 +474,61 @@ function Index() {
           </div>
         </section>
 
-        {/* CTA BAND */}
-        <section className="pb-24">
+      {/* VISIT US */}
+      <section id="visit" className="py-24">
+        <div className="mx-auto max-w-[1180px] px-6">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <FadeIn>
+              <figure className="overflow-hidden rounded-lg border border-border shadow-sm">
+                <img
+                  src={shopFront.url}
+                  alt="Clones Tech Repair shop front at The Diamond, Clones"
+                  className="w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="border-t border-border bg-surface px-5 py-3 text-sm text-muted-foreground">
+                  Clones Tech Repair — The Diamond, Clones, Co. Monaghan
+                </figcaption>
+              </figure>
+            </FadeIn>
+
+            <div>
+              <FadeIn>
+                <span className="eyebrow mb-3.5">Visit the Shop</span>
+                <h2 className="mb-6 text-[clamp(28px,3.5vw,42px)] font-bold">
+                  Right in the heart of Clones.
+                </h2>
+                <p className="mb-8 text-base text-muted-foreground">
+                  Drop by The Diamond any day we're open. We're easy to find — just look for the
+                  bright Clones Tech signage on the main street.
+                </p>
+              </FadeIn>
+
+              <FadeIn>
+                <div className="overflow-hidden rounded-lg border border-border bg-card">
+                  <div className="grid grid-cols-2 border-b border-border bg-surface px-5 py-3 text-sm font-semibold text-brand-dark">
+                    <span>Day</span>
+                    <span>Hours</span>
+                  </div>
+                  {openingHours.map((row) => (
+                    <div
+                      key={row.day}
+                      className="grid grid-cols-2 border-b border-border px-5 py-3 text-sm last:border-0"
+                    >
+                      <span className="font-medium text-foreground">{row.day}</span>
+                      <span className="text-muted-foreground">{row.hours}</span>
+                    </div>
+                  ))}
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BAND */}
+      <section className="pb-24">
           <div className="mx-auto max-w-[1180px] px-6">
             <FadeIn>
               <div className="cta-band flex flex-col items-center gap-6 rounded-lg border border-brand px-8 py-11 text-center md:flex-row md:justify-between md:px-12 md:py-15 md:text-left">
