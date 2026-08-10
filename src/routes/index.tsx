@@ -15,6 +15,16 @@ import {
 } from "lucide-react";
 import logo from "@/assets/clones-tech-logo.png.asset.json";
 import shopFront from "@/assets/clones-tech-shop.png.asset.json";
+import p3 from "@/assets/product-3.png.asset.json";
+import p4 from "@/assets/product-4.png.asset.json";
+import p5 from "@/assets/product-5.png.asset.json";
+import p6 from "@/assets/product-6.png.asset.json";
+import p7 from "@/assets/product-7.png.asset.json";
+import p8 from "@/assets/product-8.png.asset.json";
+import p9 from "@/assets/product-9.png.asset.json";
+import p10 from "@/assets/product-10.png.asset.json";
+import p11 from "@/assets/product-11.png.asset.json";
+import p12 from "@/assets/product-12.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -103,10 +113,24 @@ function FadeIn({ children, className = "" }: { children: ReactNode; className?:
 
 const navLinks = [
   { label: "Services", href: "#services" },
+  { label: "In Store", href: "#shop" },
   { label: "Why Us", href: "#why" },
   { label: "Reviews", href: "#reviews" },
   { label: "Visit Us", href: "#visit" },
   { label: "Contact", href: "#contact" },
+];
+
+const products = [
+  { img: p3, name: "Universal Laptop Power Adapter", detail: "Ven-Dens VD-UC01 — 11 connectors" },
+  { img: p4, name: "USB-C to HDMI Cable", detail: "hoco UA27 — 4K, 2m braided" },
+  { img: p5, name: "Wireless Car Charger", detail: "hoco CA202 Plus — 15W auto-clamping" },
+  { img: p6, name: "HD Webcam", detail: "Trust Trino — 720p with microphone" },
+  { img: p7, name: "MP3 / Video Player", detail: "Intenso Video Scooter BT — 64GB" },
+  { img: p8, name: "In-Car FM Transmitter", detail: "hoco E81 — PD30W + QC3.0" },
+  { img: p9, name: "Magnetic Dashboard Holder", detail: "hoco H61 — full ring N52 magnet" },
+  { img: p10, name: "Big-Button Phones", detail: "Doro 2424 & Doro 1380" },
+  { img: p11, name: "Fire TV Stick HD", detail: "Amazon — 8GB, Wi-Fi 5" },
+  { img: p12, name: "Wi-Fi Security Camera", detail: "Tapo C200 — 1080p pan/tilt" },
 ];
 
 const services = [
