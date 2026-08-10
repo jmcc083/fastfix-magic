@@ -1,17 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
-  Smartphone,
+  ArrowRight,
   BatteryCharging,
-  Gamepad2,
+  Check,
+  Clock3,
   DoorOpen,
-  Laptop,
-  Droplets,
-  Phone,
-  Menu,
-  Printer,
-  Unlock,
+  Gamepad2,
   HardDrive,
+  Laptop,
+  MapPin,
+  Menu,
+  MessageCircle,
+  Phone,
+  Printer,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Star,
+  Unlock,
+  Wrench,
 } from "lucide-react";
 import logo from "@/assets/clones-tech-logo.png.asset.json";
 import shopFront from "@/assets/clones-tech-shop.png.asset.json";
@@ -26,24 +34,28 @@ import p10 from "@/assets/product-10.png.asset.json";
 import p11 from "@/assets/product-11.png.asset.json";
 import p12 from "@/assets/product-12.png.asset.json";
 
+const PHONE = "+353858734871";
+const PHONE_DISPLAY = "085 873 4871";
+const LANDLINE_DISPLAY = "047 52594";
+const FACEBOOK = "https://www.facebook.com/clonestech/";
+
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Clones Tech Repair — Premium Device Repair in Clones" },
+      { title: "Clones Tech Repair | Phone, Console & Device Repairs in Clones" },
       {
         name: "description",
         content:
-          "Fast, honest, expert repairs for phones, tablets, consoles and smart home systems. Same-day service. Fair prices. Trusted across Clones.",
+          "Fast, friendly tech repairs in Clones, Co. Monaghan. Phone screens, charging ports, consoles, laptops, smart devices, accessories and more.",
       },
-      { property: "og:title", content: "Clones Tech Repair — Premium Device Repair in Clones" },
+      { property: "og:title", content: "Clones Tech Repair | Fast. Fair. Local." },
       {
         property: "og:description",
         content:
-          "Same-day phone, tablet, console and smart home repairs in Clones, Co. Monaghan. Honest pricing, expert work.",
+          "Trusted local tech repair in The Diamond, Clones. Straight answers, fair pricing and fast turnaround where possible.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -54,8 +66,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Clones Tech Repair",
-          description:
-            "Premium, honest device repair in Clones — phones, tablets, consoles and smart home systems.",
+          description: "Local device repair, sales, unlocking and accessories in Clones, Co. Monaghan.",
           address: {
             "@type": "PostalAddress",
             streetAddress: "The Diamond",
@@ -64,15 +75,9 @@ export const Route = createFileRoute("/")({
             postalCode: "H23 W181",
             addressCountry: "IE",
           },
-          telephone: "+353858734871",
+          telephone: PHONE,
           email: "clonestech@gmail.com",
-          aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "5" },
-          openingHoursSpecification: [
-            { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "10:30", closes: "18:00" },
-            { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "10:30", closes: "12:30" },
-            { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "14:00", closes: "18:00" },
-            { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:30", closes: "18:00" },
-          ],
+          sameAs: [FACEBOOK],
         }),
       },
     ],
@@ -93,7 +98,7 @@ function FadeIn({ children, className = "" }: { children: ReactNode; className?:
           io.disconnect();
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.12 },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -112,289 +117,241 @@ function FadeIn({ children, className = "" }: { children: ReactNode; className?:
 }
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "In Store", href: "#shop" },
-  { label: "Why Us", href: "#why" },
+  { label: "Repairs", href: "#services" },
+  { label: "Why Clones Tech", href: "#why" },
   { label: "Reviews", href: "#reviews" },
-  { label: "Visit Us", href: "#visit" },
-  { label: "Contact", href: "#contact" },
-];
-
-const products = [
-  { img: p3, name: "Universal Laptop Power Adapter", detail: "Ven-Dens VD-UC01 — 11 connectors" },
-  { img: p4, name: "USB-C to HDMI Cable", detail: "hoco UA27 — 4K, 2m braided" },
-  { img: p5, name: "Wireless Car Charger", detail: "hoco CA202 Plus — 15W auto-clamping" },
-  { img: p6, name: "HD Webcam", detail: "Trust Trino — 720p with microphone" },
-  { img: p7, name: "MP3 / Video Player", detail: "Intenso Video Scooter BT — 64GB" },
-  { img: p8, name: "In-Car FM Transmitter", detail: "hoco E81 — PD30W + QC3.0" },
-  { img: p9, name: "Magnetic Dashboard Holder", detail: "hoco H61 — full ring N52 magnet" },
-  { img: p10, name: "Big-Button Phones", detail: "Doro 2424 & Doro 1380" },
-  { img: p11, name: "Fire TV Stick HD", detail: "Amazon — 8GB, Wi-Fi 5" },
-  { img: p12, name: "Wi-Fi Security Camera", detail: "Tapo C200 — 1080p pan/tilt" },
+  { label: "In Store", href: "#shop" },
+  { label: "Visit", href: "#visit" },
 ];
 
 const services = [
   {
     icon: Smartphone,
-    title: "Screen & Display Repair",
-    body: "Cracked, shattered or unresponsive — phone and tablet screens replaced with precision, often while you wait.",
+    title: "Phone & Tablet Repair",
+    body: "Cracked screens, damaged displays, buttons and everyday faults across phones, iPads and tablets.",
   },
   {
     icon: BatteryCharging,
-    title: "Battery & Charging Ports",
-    body: "Won't hold a charge or won't charge at all? We diagnose and repair batteries and charging ports fast.",
+    title: "Batteries & Charging Ports",
+    body: "Device not charging, cable feeling loose or battery dying too fast? We’ll diagnose the cause first.",
   },
   {
     icon: Gamepad2,
     title: "Console & Gaming Repair",
-    body: "Nintendo Switch, PlayStation and Xbox repairs — from charging faults to joystick drift and dock issues.",
-  },
-  {
-    icon: DoorOpen,
-    title: "Smart Home & Intercom Systems",
-    body: "From door entry systems to smart intercoms that won't connect to your phone — we sort connectivity issues properly, not just patch them.",
+    body: "Nintendo Switch, PlayStation and Xbox issues — including charging faults, ports and controller problems.",
   },
   {
     icon: Laptop,
     title: "Laptop & Computer Repair",
-    body: "Slow, cracked, or acting up — hardware diagnostics and repair for laptops and desktops alike.",
+    body: "Slow systems, hardware faults, upgrades and troubleshooting for laptops and desktop computers.",
   },
   {
-    icon: Droplets,
-    title: "Water Damage & Diagnostics",
-    body: "Dropped it in water? Don't panic. Free diagnosis to assess what's recoverable before any work begins.",
-  },
-  {
-    icon: Unlock,
-    title: "Unlocking, Sales & Accessories",
-    body: "Phone unlocking, software fixes, and a shop full of handsets, tablets and accessories — smartphones, tablets and laptops, sold and set up.",
+    icon: DoorOpen,
+    title: "Smart Devices & Connectivity",
+    body: "Intercoms and devices that refuse to connect properly. If it’s an unusual tech problem, bring it in.",
   },
   {
     icon: HardDrive,
     title: "Software & Data Transfer",
-    body: "Operating system installs, virus removal and safe transfer of your photos, contacts and files between devices.",
+    body: "Software issues, setup, virus removal and help moving contacts, photos and files between devices.",
+  },
+  {
+    icon: Unlock,
+    title: "Unlocking, Phones & Accessories",
+    body: "Unlocking, handsets, tablets, chargers, cables, cases and practical advice on the right product for you.",
   },
   {
     icon: Printer,
-    title: "Printing, Scanning & Binding",
-    body: "Printing, laminating, scanning and bookbinding — walk-in document services right in The Diamond.",
+    title: "Printing & Document Services",
+    body: "Walk-in printing, scanning, laminating and binding services from the shop in The Diamond.",
   },
 ];
 
-const pillars = [
-  {
-    title: "Genuinely Fast",
-    body: "Most common repairs — screens, charging ports, batteries — are sorted in 30 to 60 minutes, not days.",
-  },
-  {
-    title: "Fair, Transparent Pricing",
-    body: "You'll know the cost before we start. No inflated quotes, no surprise add-ons.",
-  },
-  {
-    title: "Problems Other Shops Won't Touch",
-    body: "Tricky connectivity issues, smart systems, consoles — if it's electronic, we'll take a proper look.",
-  },
-  {
-    title: "A Face You Can Trust",
-    body: 'Our customers don\'t just recommend "the shop" — they ask for Sam by name. That\'s the standard every repair is held to.',
-  },
+const products = [
+  { img: p3, name: "Laptop Power Adapters", detail: "Universal power options & connectors" },
+  { img: p4, name: "USB-C & Display Cables", detail: "HDMI, charging & connectivity" },
+  { img: p5, name: "Car Charging", detail: "Wireless holders & chargers" },
+  { img: p6, name: "Webcams & Computer Gear", detail: "Useful everyday accessories" },
+  { img: p7, name: "Portable Media", detail: "Players & compact devices" },
+  { img: p8, name: "In-Car Tech", detail: "FM transmitters & fast charging" },
+  { img: p9, name: "Phone Holders", detail: "Magnetic & dashboard mounting" },
+  { img: p10, name: "Easy-Use Phones", detail: "Big-button handset options" },
+  { img: p11, name: "Streaming Devices", detail: "TV & entertainment tech" },
+  { img: p12, name: "Home Cameras", detail: "Wi-Fi security & smart-home gear" },
 ];
 
-const steps = [
-  {
-    num: "01",
-    title: "Walk In or Book Ahead",
-    body: "Bring your device by, or reach out to save your spot.",
-  },
-  {
-    num: "02",
-    title: "Free Diagnosis",
-    body: "We identify the issue and give you a clear, honest quote.",
-  },
-  {
-    num: "03",
-    title: "Expert Repair",
-    body: "Most repairs are completed same-day, often within the hour.",
-  },
-  {
-    num: "04",
-    title: "Walk Out Working",
-    body: "Tested, checked, and handed back better than you expected.",
-  },
-];
-
-const testimonials = [
+const reviews = [
   {
     quote:
-      "Had issues with an intercom system not connecting to phone — these guys had it all sorted in 30 minutes. Great spot, highly recommend.",
-    who: "Colm O'Reilly",
-    when: "January 2024",
+      "Had issues with an intercom system not connecting to phone, these guys had it all sorted in 30mins. Great spot. Highly recommend.",
+    who: "Local customer",
+    meta: "Intercom connectivity repair",
   },
   {
     quote:
-      "Got a charging port fixed for a Nintendo Switch Lite. Sam was really friendly and sorted my issue with no hassle. Fully recommend.",
-    who: "Colm O'Reilly",
-    when: "January 2024",
+      "Got a charging port fixed for a Nintendo Switch Lite. Sam was really friendly and sorted my issue with no hassle. Fully recommend. Great service.",
+    who: "Colm O’Reilly",
+    meta: "Nintendo Switch Lite repair",
   },
   {
-    quote:
-      "Sam is fantastic at his job. Excellent service, and doesn't charge you over the odds. Highly recommend.",
+    quote: "Sam is fantastic at his job. Excellent service, and doesn't charge you over the odds. Highly recommend.",
     who: "Dolores Collins",
-    when: "September 2022",
+    meta: "Customer recommendation",
   },
   {
     quote:
       "Dropped my phone today, smashed the screen. Took it in and it was repaired better than new within 1 hour! Fabulous service, thank you Sam.",
     who: "Mary Trant",
-    when: "September 2021",
+    meta: "Phone screen repair",
+  },
+  {
+    quote: "Really fast efficient service, very friendly staff too. Would definitely recommend.",
+    who: "Teresa Stewart",
+    meta: "Customer recommendation",
   },
 ];
 
-const trustStats = [
-  { value: "100%", label: "Recommended (5 reviews)" },
-  { value: "30–60 min", label: "Typical Turnaround Time" },
-  { value: "The Diamond", label: "Clones, Co. Monaghan" },
-  { value: "Sales & Repair", label: "Phones · Tablets · Laptops" },
-];
-
-const openingHours = [
-  { day: "Monday", hours: "10:30 – 18:00" },
-  { day: "Tuesday", hours: "10:30 – 18:00" },
-  { day: "Wednesday", hours: "10:30 – 18:00" },
-  { day: "Thursday", hours: "10:30 – 18:00" },
-  { day: "Friday", hours: "10:30 – 12:30 · 14:00 – 18:00" },
-  { day: "Saturday", hours: "10:30 – 18:00" },
-  { day: "Sunday", hours: "Closed" },
+const reasons = [
+  {
+    icon: Clock3,
+    title: "Fast when it matters",
+    body: "Customer reviews mention fixes completed in as little as 30–60 minutes. Turnaround depends on the fault and parts required.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Fair, straight answers",
+    body: "The reputation is built around helpful service and sensible pricing — not pushing people into replacing devices unnecessarily.",
+  },
+  {
+    icon: Wrench,
+    title: "More than phone screens",
+    body: "Consoles, laptops, intercoms, accessories and awkward connectivity issues make Clones Tech a proper local tech problem-solver.",
+  },
+  {
+    icon: MapPin,
+    title: "Local and easy to reach",
+    body: "Based right in The Diamond, Clones — somewhere customers can walk into and speak to a real person about the problem.",
+  },
 ];
 
 const btnPrimary =
-  "inline-flex items-center gap-2 rounded-full border border-transparent px-7 py-3.5 text-[15px] font-semibold text-primary-foreground [background:var(--gradient-brand)] [box-shadow:var(--shadow-brand)] transition-all duration-200 hover:-translate-y-0.5 hover:[box-shadow:var(--shadow-brand-lg)]";
+  "inline-flex items-center justify-center gap-2 rounded-full border border-transparent px-7 py-3.5 text-[15px] font-semibold text-primary-foreground [background:var(--gradient-brand)] [box-shadow:var(--shadow-brand)] transition-all duration-200 hover:-translate-y-0.5 hover:[box-shadow:var(--shadow-brand-lg)]";
+const btnDark =
+  "inline-flex items-center justify-center gap-2 rounded-full border border-foreground/15 bg-foreground px-7 py-3.5 text-[15px] font-semibold text-background transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90";
 const btnOutline =
-  "inline-flex items-center gap-2 rounded-full border border-brand bg-transparent px-7 py-3.5 text-[15px] font-semibold text-brand-dark transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent";
+  "inline-flex items-center justify-center gap-2 rounded-full border border-border bg-background px-7 py-3.5 text-[15px] font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-brand hover:text-brand-dark";
 
 function Index() {
   const [open, setOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/75 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-6 py-4">
-          <a href="#top" className="flex items-center gap-2.5 font-display text-[22px] font-bold tracking-[1px]">
-            <img src={logo.url} alt="Clones Tech Repair logo" className="size-9" />
-            CLONES<span className="text-brand">TECH</span>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/80 bg-background/88 backdrop-blur-xl">
+        <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-5 py-3.5 sm:px-6">
+          <a href="#top" className="flex items-center gap-2.5 font-display text-[20px] font-bold tracking-[.04em]">
+            <img src={logo.url} alt="Clones Tech Repair logo" className="size-9 rounded-md object-contain" />
+            <span>CLONES<span className="text-brand">TECH</span></span>
           </a>
 
           <div
             className={`${
               open ? "flex" : "hidden"
-            } absolute inset-x-0 top-full flex-col gap-5 border-b border-border bg-surface p-6 text-[15px] font-medium md:static md:flex md:flex-row md:gap-9 md:border-0 md:bg-transparent md:p-0`}
+            } absolute inset-x-0 top-full flex-col gap-5 border-b border-border bg-background p-6 text-[14px] font-medium md:static md:flex md:flex-row md:items-center md:gap-7 md:border-0 md:bg-transparent md:p-0`}
           >
             {navLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="text-muted-foreground transition-colors hover:text-brand-dark"
-              >
+              <a key={l.label} href={l.href} onClick={() => setOpen(false)} className="text-muted-foreground transition-colors hover:text-foreground">
                 {l.label}
               </a>
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
-            <a href="tel:+353858734871" className={`${btnOutline} hidden px-5 py-2.5 md:inline-flex`}>
-              <Phone className="size-4" />
-              Call Now
+          <div className="flex items-center gap-3">
+            <a href={`tel:${PHONE}`} className={`${btnPrimary} hidden px-5 py-2.5 md:inline-flex`}>
+              <Phone className="size-4" /> Call now
             </a>
-            <button
-              type="button"
-              aria-label="Toggle navigation"
-              onClick={() => setOpen((v) => !v)}
-              className="md:hidden"
-            >
-              <Menu className="size-6 text-foreground" />
+            <button type="button" aria-label="Toggle navigation" onClick={() => setOpen((v) => !v)} className="md:hidden">
+              <Menu className="size-6" />
             </button>
           </div>
         </nav>
       </header>
 
       <main id="top">
-        {/* HERO */}
-        <section className="hero-glow relative flex min-h-screen items-center overflow-hidden px-0 pb-24 pt-40">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-[10%] -top-[20%] size-[600px] rounded-full blur-[40px] [background:radial-gradient(circle,color-mix(in_oklab,var(--brand)_18%,transparent),transparent_70%)]"
-          />
-          <div className="container relative z-10 mx-auto max-w-[1180px] px-6">
-            <div className="max-w-[720px]">
-              <span className="eyebrow mb-3.5">Clones' Trusted Repair Specialists</span>
-              <h1 className="mb-5 text-[clamp(38px,5.5vw,64px)] font-bold leading-[1.1]">
-                Precision Tech Repair, <br />
-                <span className="brand-text">Restored to Perfection.</span>
+        <section className="hero-glow relative overflow-hidden pb-18 pt-32 sm:pt-36 lg:pb-24 lg:pt-40">
+          <div className="mx-auto grid max-w-[1180px] items-center gap-12 px-5 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
+            <div className="relative z-10">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-accent px-3 py-1.5 text-[12px] font-semibold text-brand-dark">
+                <Sparkles className="size-3.5" /> Local tech repair in The Diamond, Clones
+              </div>
+              <h1 className="mb-6 text-[clamp(44px,6.5vw,78px)] font-bold leading-[.98] tracking-[-.035em]">
+                Broken tech?<br />
+                <span className="brand-text">Bring it to Sam.</span>
               </h1>
-              <p className="mb-9 max-w-[560px] text-lg text-muted-foreground">
-                From smashed screens to smart intercom systems, Clones Tech Repair delivers premium,
-                honest, same-day device care — done right the first time, every time.
+              <p className="mb-8 max-w-[610px] text-[17px] leading-7 text-muted-foreground sm:text-lg">
+                Phone smashed? Switch not charging? Intercom won’t connect? Clones Tech is the local place for fast, friendly repairs and straight answers — without the hassle.
               </p>
-              <div className="mb-10 flex flex-wrap gap-4">
-                <a href="#contact" className={btnPrimary}>
-                  Book Your Repair
+              <div className="mb-8 flex flex-col gap-3 sm:flex-row">
+                <a href={`tel:${PHONE}`} className={btnPrimary}>
+                  <Phone className="size-4" /> Call for a repair
                 </a>
-                <a href="tel:+353858734871" className={btnOutline}>
-                  Call the Shop
+                <a href={FACEBOOK} target="_blank" rel="noreferrer" className={btnDark}>
+                  <MessageCircle className="size-4" /> Message on Facebook
                 </a>
               </div>
-              <div className="flex flex-wrap gap-7 text-sm text-muted-foreground">
-                <p>
-                  <strong className="font-semibold text-brand-dark">★★★★★</strong> 5-star rated
-                  locally
-                </p>
-                <p>
-                  Repairs from <strong className="font-semibold text-brand-dark">30 minutes</strong>
-                </p>
-                <p>Phones · Consoles · Smart Home Systems</p>
+              <div className="grid max-w-[650px] grid-cols-1 gap-3 text-sm text-muted-foreground sm:grid-cols-3">
+                {["Fair local pricing", "Fast turnaround where possible", "Phones · consoles · laptops + more"].map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-accent text-brand-dark"><Check className="size-3" /></span>
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
+
+            <FadeIn>
+              <div className="relative">
+                <div className="absolute -inset-5 -z-10 rounded-[38px] bg-accent/80 blur-2xl" />
+                <figure className="hero-photo overflow-hidden rounded-[30px] border border-border bg-card p-2 shadow-[0_28px_80px_rgba(25,20,20,.16)]">
+                  <img src={shopFront.url} alt="Clones Tech Repair shop in The Diamond, Clones" className="aspect-[4/4.7] w-full rounded-[24px] object-cover" />
+                </figure>
+                <div className="absolute -bottom-5 -left-3 max-w-[250px] rounded-2xl border border-border bg-background/95 p-4 shadow-xl backdrop-blur sm:-left-8">
+                  <div className="mb-1 flex gap-0.5 text-brand">{[1,2,3,4,5].map((n) => <Star key={n} className="size-4 fill-current" />)}</div>
+                  <p className="text-sm font-semibold">“Excellent service, and doesn’t charge you over the odds.”</p>
+                  <p className="mt-1 text-xs text-muted-foreground">— Dolores Collins</p>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </section>
 
-        {/* TRUST BAR */}
-        <div className="border-y border-border bg-surface py-7">
-          <div className="mx-auto flex max-w-[1180px] flex-wrap justify-between gap-5 px-6 text-center">
-            {trustStats.map((s) => (
-              <div key={s.label} className="min-w-[150px] flex-1">
-                <strong className="mb-1 block font-display text-[26px] text-brand-dark">
-                  {s.value}
-                </strong>
-                <span className="text-[13px] text-muted-foreground">{s.label}</span>
-              </div>
-            ))}
+        <section className="border-y border-border bg-ink py-7 text-white">
+          <div className="mx-auto grid max-w-[1180px] grid-cols-2 gap-6 px-5 text-center sm:px-6 lg:grid-cols-4">
+            <div><strong className="block font-display text-2xl">Since 2019</strong><span className="text-xs text-white/65">Serving Clones</span></div>
+            <div><strong className="block font-display text-2xl">Fast fixes</strong><span className="text-xs text-white/65">When the repair allows</span></div>
+            <div><strong className="block font-display text-2xl">Fair prices</strong><span className="text-xs text-white/65">Praised by customers</span></div>
+            <div><strong className="block font-display text-2xl">Real people</strong><span className="text-xs text-white/65">Local, friendly service</span></div>
           </div>
-        </div>
+        </section>
 
-        {/* SERVICES */}
-        <section id="services" className="py-24">
-          <div className="mx-auto max-w-[1180px] px-6">
-            <FadeIn className="mb-14 max-w-[640px]">
-              <span className="eyebrow mb-3.5">What We Fix</span>
-              <h2 className="mb-4 text-[clamp(28px,3.5vw,42px)] font-bold">
-                One shop. Every device that matters.
-              </h2>
-              <p className="text-base text-muted-foreground">
-                If it plugs in, connects, or lights up — we've probably already fixed one just like
-                it.
-              </p>
+        <section id="services" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
+            <FadeIn className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+              <div className="max-w-[690px]">
+                <span className="eyebrow mb-3">Repairs & tech help</span>
+                <h2 className="text-[clamp(34px,4vw,52px)] font-bold leading-[1.05] tracking-[-.025em]">More than a phone repair shop.</h2>
+              </div>
+              <p className="max-w-[390px] text-muted-foreground">If it charges, connects, displays, stores data or refuses to work the way it should, it’s worth asking Clones Tech.</p>
             </FadeIn>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {services.map((s) => (
                 <FadeIn key={s.title}>
-                  <article className="h-full rounded-lg border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand">
-                    <div className="mb-5 flex size-13 items-center justify-center rounded-full border border-brand [background:linear-gradient(135deg,color-mix(in_oklab,var(--brand)_20%,transparent),color-mix(in_oklab,var(--brand)_5%,transparent))]">
-                      <s.icon className="size-6 text-brand-dark" />
+                  <article className="service-card group h-full rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/45 hover:shadow-lg">
+                    <div className="mb-7 flex size-11 items-center justify-center rounded-xl bg-accent text-brand-dark transition-transform group-hover:scale-105">
+                      <s.icon className="size-5" />
                     </div>
-                    <h3 className="mb-2.5 font-sans text-[19px] font-semibold">{s.title}</h3>
-                    <p className="text-[14.5px] text-muted-foreground">{s.body}</p>
+                    <h3 className="mb-2 font-sans text-[17px] font-semibold">{s.title}</h3>
+                    <p className="text-[14px] leading-6 text-muted-foreground">{s.body}</p>
                   </article>
                 </FadeIn>
               ))}
@@ -402,95 +359,67 @@ function Index() {
           </div>
         </section>
 
-        {/* WHY US */}
-        <section id="why" className="bg-surface py-24">
-          <div className="mx-auto max-w-[1180px] px-6">
-            <FadeIn className="mb-14 max-w-[640px]">
-              <span className="eyebrow mb-3.5">Why Clones Trusts Us</span>
-              <h2 className="text-[clamp(28px,3.5vw,42px)] font-bold">
-                Real skill. No nonsense. No overcharging.
-              </h2>
+        <section id="why" className="bg-surface py-20 sm:py-24">
+          <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
+            <FadeIn className="mb-12 max-w-[720px]">
+              <span className="eyebrow mb-3">Why Clones Tech</span>
+              <h2 className="mb-4 text-[clamp(34px,4vw,52px)] font-bold leading-[1.05] tracking-[-.025em]">Fast. Fair. Local. That’s the whole idea.</h2>
+              <p className="text-lg text-muted-foreground">No call centre. No confusing repair process. Just bring the problem in and get a straight answer from someone who knows the work.</p>
             </FadeIn>
 
-            <div className="grid items-center gap-14 lg:grid-cols-2">
-              <div className="flex flex-col gap-7">
-                {pillars.map((p, i) => (
-                  <FadeIn key={p.title}>
-                    <div className="flex gap-4">
-                      <div className="flex size-11 shrink-0 items-center justify-center rounded-full border border-brand font-display text-[22px] text-brand">
-                        {i + 1}
-                      </div>
-                      <div>
-                        <h4 className="mb-1.5 text-[17px] font-semibold">{p.title}</h4>
-                        <p className="text-[14.5px] text-muted-foreground">{p.body}</p>
-                      </div>
-                    </div>
-                  </FadeIn>
-                ))}
-              </div>
-
-              <FadeIn>
-                <figure className="relative rounded-lg border border-border bg-card p-10">
-                  <span
-                    aria-hidden
-                    className="absolute left-6 top-2.5 font-display text-[80px] leading-none text-brand opacity-30"
-                  >
-                    &ldquo;
-                  </span>
-                  <blockquote className="relative z-10 mb-6 text-[17px]">
-                    "Sam is fantastic at his job. Excellent service, and doesn't charge you over the
-                    odds."
-                  </blockquote>
-                  <figcaption className="text-sm font-semibold text-brand-dark">
-                    Dolores Collins <span className="font-normal text-muted-foreground">— verified customer</span>
-                  </figcaption>
-                </figure>
-              </FadeIn>
-            </div>
-          </div>
-        </section>
-
-        {/* PROCESS */}
-        <section className="py-24">
-          <div className="mx-auto max-w-[1180px] px-6">
-            <FadeIn className="mb-14 max-w-[640px]">
-              <span className="eyebrow mb-3.5">How It Works</span>
-              <h2 className="text-[clamp(28px,3.5vw,42px)] font-bold">
-                Simple, honest, fast — from drop-off to fixed.
-              </h2>
-            </FadeIn>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {steps.map((s) => (
-                <FadeIn key={s.num}>
-                  <div>
-                    <div className="mb-2.5 font-display text-[38px] text-brand opacity-50">
-                      {s.num}
-                    </div>
-                    <h4 className="mb-2 text-[17px] font-semibold">{s.title}</h4>
-                    <p className="text-sm text-muted-foreground">{s.body}</p>
-                  </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              {reasons.map((r) => (
+                <FadeIn key={r.title}>
+                  <article className="flex h-full gap-5 rounded-2xl border border-border bg-background p-6 sm:p-7">
+                    <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-foreground text-background"><r.icon className="size-5" /></div>
+                    <div><h3 className="mb-2 font-sans text-lg font-semibold">{r.title}</h3><p className="text-sm leading-6 text-muted-foreground">{r.body}</p></div>
+                  </article>
                 </FadeIn>
               ))}
             </div>
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
-        <section id="reviews" className="bg-surface py-24">
-          <div className="mx-auto max-w-[1180px] px-6">
-            <FadeIn className="mb-14 max-w-[640px]">
-              <span className="eyebrow mb-3.5">In Their Words</span>
-              <h2 className="text-[clamp(28px,3.5vw,42px)] font-bold">What Clones is saying.</h2>
+        <section className="py-20 sm:py-24">
+          <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
+            <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+              <FadeIn>
+                <span className="eyebrow mb-3">How it works</span>
+                <h2 className="mb-4 text-[clamp(34px,4vw,50px)] font-bold leading-[1.05]">From broken to sorted.</h2>
+                <p className="mb-7 text-muted-foreground">The website should make contacting the shop feel as easy as the service itself.</p>
+                <a href={`tel:${PHONE}`} className={btnPrimary}>Call {PHONE_DISPLAY}<ArrowRight className="size-4" /></a>
+              </FadeIn>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  ["01", "Bring it in", "Walk into the shop or call first if you want to explain the issue."],
+                  ["02", "Get it checked", "The problem is diagnosed before you’re pushed towards any repair."],
+                  ["03", "Know the options", "Get a clear explanation of what can be done and what makes sense."],
+                  ["04", "Get back connected", "Once repaired, the device is checked and ready to get back into your hands."],
+                ].map(([num,title,body]) => (
+                  <FadeIn key={num}>
+                    <div className="rounded-2xl border border-border p-6"><span className="mb-5 block font-display text-4xl text-brand/45">{num}</span><h3 className="mb-2 font-sans text-lg font-semibold">{title}</h3><p className="text-sm leading-6 text-muted-foreground">{body}</p></div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="reviews" className="bg-ink py-20 text-white sm:py-24">
+          <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
+            <FadeIn className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+              <div><span className="mb-3 block text-xs font-semibold uppercase tracking-[.2em] text-brand-soft">Customer reviews</span><h2 className="text-[clamp(34px,4vw,52px)] font-bold leading-[1.05]">Don’t take the website’s word for it.</h2></div>
+              <p className="max-w-[410px] text-white/62">Speed, friendliness, fair pricing and unusual fixes come up again and again in local recommendations.</p>
             </FadeIn>
-            <div className="grid gap-6 md:grid-cols-2">
-              {testimonials.map((t, i) => (
-                <FadeIn key={i}>
-                  <figure className="h-full rounded-lg border border-border bg-card p-8">
-                    <div className="mb-3.5 tracking-[2px] text-brand">★★★★★</div>
-                    <blockquote className="mb-4.5 text-[15.5px]">"{t.quote}"</blockquote>
-                    <figcaption className="text-[13.5px] text-muted-foreground">
-                      <strong className="font-semibold text-foreground">{t.who}</strong> — {t.when}
-                    </figcaption>
+
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+              {reviews.map((r, i) => (
+                <FadeIn key={r.who + i} className={i < 2 ? "lg:col-span-3" : "lg:col-span-2"}>
+                  <figure className="h-full rounded-2xl border border-white/10 bg-white/[.045] p-6 sm:p-7">
+                    <div className="mb-4 flex gap-0.5 text-brand-soft">{[1,2,3,4,5].map((n)=><Star key={n} className="size-4 fill-current" />)}</div>
+                    <blockquote className="mb-6 text-[15.5px] leading-7 text-white/90">“{r.quote}”</blockquote>
+                    <figcaption><strong className="block text-sm">{r.who}</strong><span className="text-xs text-white/48">{r.meta}</span></figcaption>
                   </figure>
                 </FadeIn>
               ))}
@@ -498,167 +427,72 @@ function Index() {
           </div>
         </section>
 
-      {/* IN STORE */}
-      <section id="shop" className="bg-surface py-24">
-        <div className="mx-auto max-w-[1180px] px-6">
-          <FadeIn className="mb-14 max-w-[640px]">
-            <span className="eyebrow mb-3.5">In Store</span>
-            <h2 className="mb-4 text-[clamp(28px,3.5vw,42px)] font-bold">
-              Accessories &amp; gadgets on the shelves
-            </h2>
-            <p className="text-base text-muted-foreground">
-              A snapshot of what's in stock right now — chargers, cables, car kits, cameras, phones
-              and more. Call in and we'll help you find the right one.
-            </p>
-          </FadeIn>
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
-            {products.map((p) => (
-              <FadeIn key={p.name}>
-                <figure className="group h-full overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
-                  <img
-                    src={p.img.url}
-                    alt={p.name}
-                    loading="lazy"
-                    className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                  <figcaption className="p-4">
-                    <strong className="block text-sm font-semibold">{p.name}</strong>
-                    <span className="mt-1 block text-[12px] text-muted-foreground">{p.detail}</span>
-                  </figcaption>
-                </figure>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* VISIT US */}
-      <section id="visit" className="py-24">
-        <div className="mx-auto max-w-[1180px] px-6">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <FadeIn>
-              <figure className="overflow-hidden rounded-lg border border-border shadow-sm">
-                <img
-                  src={shopFront.url}
-                  alt="Clones Tech Repair shop front at The Diamond, Clones"
-                  className="w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <figcaption className="border-t border-border bg-surface px-5 py-3 text-sm text-muted-foreground">
-                  Clones Tech Repair — The Diamond, Clones, Co. Monaghan
-                </figcaption>
-              </figure>
+        <section id="shop" className="py-20 sm:py-24">
+          <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
+            <FadeIn className="mb-11 max-w-[700px]">
+              <span className="eyebrow mb-3">Also in store</span>
+              <h2 className="mb-4 text-[clamp(34px,4vw,50px)] font-bold leading-[1.05]">Useful tech, without ordering blind online.</h2>
+              <p className="text-muted-foreground">Chargers, cables, phones, car accessories, cameras and everyday gadgets — with someone there to help you choose the right one.</p>
             </FadeIn>
-
-            <div>
-              <FadeIn>
-                <span className="eyebrow mb-3.5">Visit the Shop</span>
-                <h2 className="mb-6 text-[clamp(28px,3.5vw,42px)] font-bold">
-                  Right in the heart of Clones.
-                </h2>
-                <p className="mb-8 text-base text-muted-foreground">
-                  Drop by The Diamond any day we're open. We're easy to find — just look for the
-                  bright Clones Tech signage on the main street.
-                </p>
-              </FadeIn>
-
-              <FadeIn>
-                <div className="overflow-hidden rounded-lg border border-border bg-card">
-                  <div className="grid grid-cols-2 border-b border-border bg-surface px-5 py-3 text-sm font-semibold text-brand-dark">
-                    <span>Day</span>
-                    <span>Hours</span>
-                  </div>
-                  {openingHours.map((row) => (
-                    <div
-                      key={row.day}
-                      className="grid grid-cols-2 border-b border-border px-5 py-3 text-sm last:border-0"
-                    >
-                      <span className="font-medium text-foreground">{row.day}</span>
-                      <span className="text-muted-foreground">{row.hours}</span>
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
+            <div className="flex snap-x gap-4 overflow-x-auto pb-4 lg:grid lg:grid-cols-5 lg:overflow-visible">
+              {products.map((p) => (
+                <figure key={p.name} className="group min-w-[210px] snap-start overflow-hidden rounded-2xl border border-border bg-card lg:min-w-0">
+                  <img src={p.img.url} alt={p.name} loading="lazy" className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.035]" />
+                  <figcaption className="p-4"><strong className="block text-sm font-semibold">{p.name}</strong><span className="mt-1 block text-xs text-muted-foreground">{p.detail}</span></figcaption>
+                </figure>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA BAND */}
-      <section className="pb-24">
-          <div className="mx-auto max-w-[1180px] px-6">
+        <section id="visit" className="bg-surface py-20 sm:py-24">
+          <div className="mx-auto grid max-w-[1180px] gap-10 px-5 sm:px-6 lg:grid-cols-[1.08fr_.92fr] lg:items-center">
             <FadeIn>
-              <div className="cta-band flex flex-col items-center gap-6 rounded-lg border border-brand px-8 py-11 text-center md:flex-row md:justify-between md:px-12 md:py-15 md:text-left">
-                <h3 className="max-w-[480px] text-[clamp(22px,3vw,30px)] font-bold">
-                  Don't live with a broken screen. Get it fixed today.
-                </h3>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <a href="tel:+353858734871" className={btnPrimary}>
-                    <Phone className="size-4" />
-                    Call the Shop
-                  </a>
-                  <a href="#contact" className={btnOutline}>
-                    Get a Free Quote
-                  </a>
-                </div>
+              <figure className="overflow-hidden rounded-[26px] border border-border bg-card p-2 shadow-sm">
+                <img src={shopFront.url} alt="Clones Tech Repair storefront" className="aspect-[16/11] w-full rounded-[20px] object-cover" loading="lazy" />
+              </figure>
+            </FadeIn>
+            <FadeIn>
+              <span className="eyebrow mb-3">Visit Clones Tech</span>
+              <h2 className="mb-5 text-[clamp(34px,4vw,50px)] font-bold leading-[1.05]">Right in the heart of Clones.</h2>
+              <p className="mb-7 text-muted-foreground">The Diamond, Clones, Co. Monaghan, H23 W181. Call ahead for a repair query, or drop into the shop and show the team what’s happening.</p>
+              <div className="mb-7 space-y-3 text-sm">
+                <a href={`tel:${PHONE}`} className="flex items-center gap-3 font-semibold hover:text-brand-dark"><span className="flex size-9 items-center justify-center rounded-full bg-background"><Phone className="size-4" /></span>{PHONE_DISPLAY} <span className="font-normal text-muted-foreground">· {LANDLINE_DISPLAY}</span></a>
+                <a href="mailto:clonestech@gmail.com" className="flex items-center gap-3 hover:text-brand-dark"><span className="flex size-9 items-center justify-center rounded-full bg-background">@</span>clonestech@gmail.com</a>
+                <div className="flex items-center gap-3"><span className="flex size-9 items-center justify-center rounded-full bg-background"><MapPin className="size-4" /></span>The Diamond, Clones, H23 W181</div>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row"><a href={`tel:${PHONE}`} className={btnPrimary}>Call the shop</a><a href={FACEBOOK} target="_blank" rel="noreferrer" className={btnOutline}>Facebook <ArrowRight className="size-4" /></a></div>
+            </FadeIn>
+          </div>
+        </section>
+
+        <section className="py-20 sm:py-24">
+          <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
+            <FadeIn>
+              <div className="conversion-card relative overflow-hidden rounded-[28px] border border-brand/20 px-6 py-12 sm:px-12 sm:py-14 lg:flex lg:items-end lg:justify-between lg:gap-10">
+                <div className="max-w-[700px]"><span className="eyebrow mb-3">Before you replace it</span><h2 className="mb-4 text-[clamp(36px,5vw,60px)] font-bold leading-[1] tracking-[-.03em]">See if Clones Tech can fix it first.</h2><p className="max-w-[600px] text-muted-foreground">A quick repair may save you the price and hassle of replacing a device you already know.</p></div>
+                <div className="mt-7 flex shrink-0 flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-col"><a href={`tel:${PHONE}`} className={btnPrimary}><Phone className="size-4"/>Call {PHONE_DISPLAY}</a><a href={FACEBOOK} target="_blank" rel="noreferrer" className={btnDark}><MessageCircle className="size-4"/>Message on Facebook</a></div>
               </div>
             </FadeIn>
           </div>
         </section>
       </main>
 
-      <footer id="contact" className="border-t border-border bg-surface pb-8 pt-16">
-        <div className="mx-auto max-w-[1180px] px-6">
-          <div className="mb-12 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-            <div>
-              <p className="mb-4 flex items-center gap-2.5 font-display text-[22px] font-bold tracking-[1px]">
-                <img src={logo.url} alt="Clones Tech Repair logo" className="size-9" />
-                CLONES<span className="text-brand">TECH</span>
-              </p>
-              <p className="text-[14.5px] text-muted-foreground">
-                Premium, honest device repair in the heart of Clones. Phones, tablets, consoles and
-                smart home systems — fixed fast, fixed right.
-              </p>
-            </div>
-            <div>
-              <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Visit / Contact</h4>
-              <p className="mb-2.5 text-[14.5px] text-muted-foreground">
-                The Diamond, Clones, Co. Monaghan, H23 W181, Ireland
-              </p>
-              <a
-                href="tel:+353858734871"
-                className="mb-2.5 block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
-              >
-                +353 85 873 4871
-              </a>
-              <a
-                href="mailto:clonestech@gmail.com"
-                className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
-              >
-                clonestech@gmail.com
-              </a>
-            </div>
-          <div>
-            <h4 className="mb-4 text-[15px] font-semibold text-brand-dark">Opening Hours</h4>
-            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Mon – Thu: 10:30 – 18:00</p>
-            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Fri: 10:30 – 12:30 · 14:00 – 18:00</p>
-            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Saturday: 10:30 – 18:00</p>
-            <p className="mb-2.5 text-[14.5px] text-muted-foreground">Sunday: Closed</p>
-            <a
-              href="https://facebook.com"
-              className="block text-[14.5px] text-muted-foreground transition-colors hover:text-brand-dark"
-            >
-              Find Us on Facebook →
-            </a>
+      <footer className="border-t border-border bg-surface pb-24 pt-12 md:pb-8">
+        <div className="mx-auto max-w-[1180px] px-5 sm:px-6">
+          <div className="grid gap-10 md:grid-cols-[1.35fr_1fr_1fr]">
+            <div><div className="mb-4 flex items-center gap-2.5 font-display text-xl font-bold"><img src={logo.url} alt="Clones Tech Repair" className="size-9 rounded-md"/>CLONES<span className="text-brand">TECH</span></div><p className="max-w-[420px] text-sm leading-6 text-muted-foreground">Local tech repair, device sales and accessories in The Diamond, Clones. Friendly help for the tech you rely on every day.</p></div>
+            <div><h3 className="mb-4 font-sans text-sm font-semibold">Contact</h3><a href={`tel:${PHONE}`} className="mb-2 block text-sm text-muted-foreground hover:text-brand-dark">{PHONE_DISPLAY}</a><p className="mb-2 text-sm text-muted-foreground">{LANDLINE_DISPLAY}</p><a href="mailto:clonestech@gmail.com" className="block text-sm text-muted-foreground hover:text-brand-dark">clonestech@gmail.com</a></div>
+            <div><h3 className="mb-4 font-sans text-sm font-semibold">Find us</h3><p className="mb-3 text-sm leading-6 text-muted-foreground">The Diamond<br/>Clones, Co. Monaghan<br/>H23 W181</p><a href={FACEBOOK} target="_blank" rel="noreferrer" className="text-sm font-semibold text-brand-dark">Facebook →</a></div>
           </div>
-          </div>
-          <div className="flex flex-wrap justify-between gap-3 border-t border-border pt-6 text-[13px] text-muted-foreground">
-            <p>© 2026 Clones Tech Repair. All rights reserved.</p>
-            <p>Built on trust, one repair at a time.</p>
-          </div>
+          <div className="mt-10 flex flex-wrap justify-between gap-3 border-t border-border pt-5 text-xs text-muted-foreground"><p>© 2026 Clones Tech Repair.</p><p>Fast. Fair. Local.</p></div>
         </div>
       </footer>
+
+      <div className="fixed inset-x-3 bottom-3 z-50 flex gap-2 rounded-2xl border border-border bg-background/95 p-2 shadow-2xl backdrop-blur md:hidden">
+        <a href={`tel:${PHONE}`} className={`${btnPrimary} flex-1 px-4 py-3`}><Phone className="size-4"/>Call</a>
+        <a href={FACEBOOK} target="_blank" rel="noreferrer" className={`${btnDark} flex-1 px-4 py-3`}><MessageCircle className="size-4"/>Message</a>
+      </div>
     </div>
   );
 }

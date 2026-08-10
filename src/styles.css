@@ -4,20 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -45,73 +31,59 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
   --color-surface: var(--surface);
   --color-brand: var(--brand);
   --color-brand-dark: var(--brand-dark);
+  --color-brand-soft: var(--brand-soft);
+  --color-ink: var(--ink);
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Playfair Display", Georgia, serif;
 }
 
 :root {
   --radius: 1rem;
-  --background: oklch(1 0 0);
-  /* near-black ink */
-  --foreground: oklch(0.22 0.01 285);
-  /* #f7f7f8 */
-  --surface: oklch(0.972 0.002 285);
+  --background: oklch(0.995 0.002 55);
+  --foreground: oklch(0.19 0.012 25);
+  --surface: oklch(0.972 0.008 55);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.01 285);
+  --card-foreground: oklch(0.19 0.012 25);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.01 285);
-  /* #ec5751 brand red */
-  --brand: oklch(0.645 0.176 22);
-  /* deeper red for text on white */
-  --brand-dark: oklch(0.545 0.194 24);
-  --primary: oklch(0.645 0.176 22);
+  --popover-foreground: oklch(0.19 0.012 25);
+  --brand: oklch(0.61 0.205 25);
+  --brand-dark: oklch(0.50 0.19 25);
+  --brand-soft: oklch(0.74 0.15 25);
+  --ink: oklch(0.165 0.012 25);
+  --primary: oklch(0.61 0.205 25);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.972 0.002 285);
-  --secondary-foreground: oklch(0.22 0.01 285);
-  --muted: oklch(0.972 0.002 285);
-  /* #5f6068 */
-  --muted-foreground: oklch(0.508 0.011 285);
-  --accent: oklch(0.965 0.02 22);
-  --accent-foreground: oklch(0.545 0.194 24);
+  --secondary: oklch(0.972 0.008 55);
+  --secondary-foreground: oklch(0.19 0.012 25);
+  --muted: oklch(0.972 0.008 55);
+  --muted-foreground: oklch(0.50 0.018 30);
+  --accent: oklch(0.955 0.035 25);
+  --accent-foreground: oklch(0.50 0.19 25);
   --destructive: oklch(0.62 0.21 25);
   --destructive-foreground: oklch(0.98 0.003 247);
-  /* #e6e6ea */
-  --border: oklch(0.918 0.004 285);
-  --input: oklch(0.918 0.004 285);
-  --ring: oklch(0.645 0.176 22);
-
-  --gradient-brand: linear-gradient(90deg, var(--brand), var(--brand-dark));
-  --gradient-cta: linear-gradient(120deg, oklch(0.985 0.012 22), oklch(0.955 0.03 22));
-  --shadow-brand: 0 8px 24px color-mix(in oklab, var(--brand) 25%, transparent);
-  --shadow-brand-lg: 0 12px 30px color-mix(in oklab, var(--brand) 35%, transparent);
+  --border: oklch(0.90 0.009 40);
+  --input: oklch(0.90 0.009 40);
+  --ring: oklch(0.61 0.205 25);
+  --gradient-brand: linear-gradient(105deg, oklch(0.64 0.205 24), oklch(0.53 0.21 26));
+  --shadow-brand: 0 10px 26px color-mix(in oklab, var(--brand) 22%, transparent);
+  --shadow-brand-lg: 0 14px 34px color-mix(in oklab, var(--brand) 30%, transparent);
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     line-height: 1.6;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
   }
-
-  h1,
-  h2,
-  h3 {
-    font-family: var(--font-display);
-  }
+  h1, h2 { font-family: var(--font-display); }
+  ::selection { background: color-mix(in oklab, var(--brand) 25%, white); }
 }
 
 @utility brand-text {
@@ -124,20 +96,29 @@
 @utility eyebrow {
   display: block;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-size: 13px;
-  font-weight: 600;
+  letter-spacing: .2em;
+  font-size: 11px;
+  font-weight: 700;
   color: var(--brand-dark);
 }
 
 @utility hero-glow {
   background:
-    radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--brand) 10%, transparent), transparent 45%),
-    radial-gradient(circle at 85% 65%, color-mix(in oklab, var(--brand) 7%, transparent), transparent 50%),
-    var(--background);
+    radial-gradient(circle at 9% 16%, color-mix(in oklab, var(--brand) 8%, transparent), transparent 28%),
+    radial-gradient(circle at 92% 58%, color-mix(in oklab, var(--brand) 7%, transparent), transparent 32%),
+    linear-gradient(180deg, oklch(1 0 0), var(--background));
 }
 
-@utility cta-band {
-  background: var(--gradient-cta);
+@utility conversion-card {
+  background:
+    radial-gradient(circle at 92% 15%, color-mix(in oklab, var(--brand) 12%, transparent), transparent 30%),
+    linear-gradient(135deg, var(--surface), var(--background));
 }
 
+.hero-photo img { filter: saturate(.94) contrast(1.02); }
+.service-card { box-shadow: 0 1px 0 rgba(24, 15, 15, .02); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
