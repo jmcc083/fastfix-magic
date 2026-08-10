@@ -105,6 +105,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Why Us", href: "#why" },
   { label: "Reviews", href: "#reviews" },
+  { label: "Visit Us", href: "#visit" },
   { label: "Contact", href: "#contact" },
 ];
 
