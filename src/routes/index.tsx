@@ -260,7 +260,7 @@ function Index() {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="#contact" className={`${btnOutline} hidden px-5 py-2.5 md:inline-flex`}>
+            <a href="tel:+353858734871" className={`${btnOutline} hidden px-5 py-2.5 md:inline-flex`}>
               <Phone className="size-4" />
               Call Now
             </a>
@@ -298,7 +298,7 @@ function Index() {
                 <a href="#contact" className={btnPrimary}>
                   Book Your Repair
                 </a>
-                <a href="#contact" className={btnOutline}>
+                <a href="tel:+353858734871" className={btnOutline}>
                   Call the Shop
                 </a>
               </div>
@@ -465,7 +465,7 @@ function Index() {
                   Don't live with a broken screen. Get it fixed today.
                 </h3>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <a href="#contact" className={btnPrimary}>
+                  <a href="tel:+353858734871" className={btnPrimary}>
                     <Phone className="size-4" />
                     Call the Shop
                   </a>
