@@ -15,6 +15,16 @@ import {
 } from "lucide-react";
 import logo from "@/assets/clones-tech-logo.png.asset.json";
 import shopFront from "@/assets/clones-tech-shop.png.asset.json";
+import p3 from "@/assets/product-3.png.asset.json";
+import p4 from "@/assets/product-4.png.asset.json";
+import p5 from "@/assets/product-5.png.asset.json";
+import p6 from "@/assets/product-6.png.asset.json";
+import p7 from "@/assets/product-7.png.asset.json";
+import p8 from "@/assets/product-8.png.asset.json";
+import p9 from "@/assets/product-9.png.asset.json";
+import p10 from "@/assets/product-10.png.asset.json";
+import p11 from "@/assets/product-11.png.asset.json";
+import p12 from "@/assets/product-12.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -103,10 +113,24 @@ function FadeIn({ children, className = "" }: { children: ReactNode; className?:
 
 const navLinks = [
   { label: "Services", href: "#services" },
+  { label: "In Store", href: "#shop" },
   { label: "Why Us", href: "#why" },
   { label: "Reviews", href: "#reviews" },
   { label: "Visit Us", href: "#visit" },
   { label: "Contact", href: "#contact" },
+];
+
+const products = [
+  { img: p3, name: "Universal Laptop Power Adapter", detail: "Ven-Dens VD-UC01 — 11 connectors" },
+  { img: p4, name: "USB-C to HDMI Cable", detail: "hoco UA27 — 4K, 2m braided" },
+  { img: p5, name: "Wireless Car Charger", detail: "hoco CA202 Plus — 15W auto-clamping" },
+  { img: p6, name: "HD Webcam", detail: "Trust Trino — 720p with microphone" },
+  { img: p7, name: "MP3 / Video Player", detail: "Intenso Video Scooter BT — 64GB" },
+  { img: p8, name: "In-Car FM Transmitter", detail: "hoco E81 — PD30W + QC3.0" },
+  { img: p9, name: "Magnetic Dashboard Holder", detail: "hoco H61 — full ring N52 magnet" },
+  { img: p10, name: "Big-Button Phones", detail: "Doro 2424 & Doro 1380" },
+  { img: p11, name: "Fire TV Stick HD", detail: "Amazon — 8GB, Wi-Fi 5" },
+  { img: p12, name: "Wi-Fi Security Camera", detail: "Tapo C200 — 1080p pan/tilt" },
 ];
 
 const services = [
@@ -473,6 +497,40 @@ function Index() {
             </div>
           </div>
         </section>
+
+      {/* IN STORE */}
+      <section id="shop" className="bg-surface py-24">
+        <div className="mx-auto max-w-[1180px] px-6">
+          <FadeIn className="mb-14 max-w-[640px]">
+            <span className="eyebrow mb-3.5">In Store</span>
+            <h2 className="mb-4 text-[clamp(28px,3.5vw,42px)] font-bold">
+              Accessories &amp; gadgets on the shelves
+            </h2>
+            <p className="text-base text-muted-foreground">
+              A snapshot of what's in stock right now — chargers, cables, car kits, cameras, phones
+              and more. Call in and we'll help you find the right one.
+            </p>
+          </FadeIn>
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
+            {products.map((p) => (
+              <FadeIn key={p.name}>
+                <figure className="group h-full overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
+                  <img
+                    src={p.img.url}
+                    alt={p.name}
+                    loading="lazy"
+                    className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                  <figcaption className="p-4">
+                    <strong className="block text-sm font-semibold">{p.name}</strong>
+                    <span className="mt-1 block text-[12px] text-muted-foreground">{p.detail}</span>
+                  </figcaption>
+                </figure>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* VISIT US */}
       <section id="visit" className="py-24">
