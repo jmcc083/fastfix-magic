@@ -14,6 +14,7 @@ import {
   HardDrive,
 } from "lucide-react";
 import logo from "@/assets/clones-tech-logo.png.asset.json";
+import shopFront from "@/assets/clones-tech-shop.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
