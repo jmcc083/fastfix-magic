@@ -498,6 +498,40 @@ function Index() {
           </div>
         </section>
 
+      {/* IN STORE */}
+      <section id="shop" className="bg-surface py-24">
+        <div className="mx-auto max-w-[1180px] px-6">
+          <FadeIn className="mb-14 max-w-[640px]">
+            <span className="eyebrow mb-3.5">In Store</span>
+            <h2 className="mb-4 text-[clamp(28px,3.5vw,42px)] font-bold">
+              Accessories &amp; gadgets on the shelves
+            </h2>
+            <p className="text-base text-muted-foreground">
+              A snapshot of what's in stock right now — chargers, cables, car kits, cameras, phones
+              and more. Call in and we'll help you find the right one.
+            </p>
+          </FadeIn>
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5">
+            {products.map((p, i) => (
+              <FadeIn key={p.name} delay={i * 60}>
+                <figure className="group h-full overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-shadow hover:shadow-md">
+                  <img
+                    src={p.img.url}
+                    alt={p.name}
+                    loading="lazy"
+                    className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                  <figcaption className="p-4">
+                    <strong className="block text-sm font-semibold">{p.name}</strong>
+                    <span className="mt-1 block text-[12px] text-muted-foreground">{p.detail}</span>
+                  </figcaption>
+                </figure>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* VISIT US */}
       <section id="visit" className="py-24">
         <div className="mx-auto max-w-[1180px] px-6">
