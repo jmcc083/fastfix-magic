@@ -33,6 +33,12 @@ import p9 from "@/assets/product-9.png.asset.json";
 import p10 from "@/assets/product-10.png.asset.json";
 import p11 from "@/assets/product-11.png.asset.json";
 import p12 from "@/assets/product-12.png.asset.json";
+import p13 from "@/assets/product-13.png.asset.json";
+import p14 from "@/assets/product-14.png.asset.json";
+import p15 from "@/assets/product-15.png.asset.json";
+import p16 from "@/assets/product-16.png.asset.json";
+import p17 from "@/assets/product-17.png.asset.json";
+import p18 from "@/assets/product-18.png.asset.json";
 
 const PHONE = "+353858734871";
 const PHONE_DISPLAY = "085 873 4871";
@@ -178,6 +184,12 @@ const products = [
   { img: p10, name: "Easy-Use Phones", detail: "Big-button handset options" },
   { img: p11, name: "Streaming Devices", detail: "TV & entertainment tech" },
   { img: p12, name: "Home Cameras", detail: "Wi-Fi security & smart-home gear" },
+  { img: p13, name: "Smart Watches", detail: "Doro watches with health & activity tracking" },
+  { img: p14, name: "High-Power Car Chargers", detail: "48W dual-port metal chargers" },
+  { img: p15, name: "Wireless Earbuds", detail: "Open-ear true wireless headsets" },
+  { img: p16, name: "Multi-Tip Car Chargers", detail: "Lightning, Micro USB & USB-C in one" },
+  { img: p17, name: "Selfie Sticks & Tripods", detail: "Mini live broadcast stands" },
+  { img: p18, name: "Bluetooth Speakers", detail: "Compact colourful BT speakers" },
 ];
 
 const reviews = [
