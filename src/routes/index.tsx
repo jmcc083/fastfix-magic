@@ -184,6 +184,12 @@ const products = [
   { img: p10, name: "Easy-Use Phones", detail: "Big-button handset options" },
   { img: p11, name: "Streaming Devices", detail: "TV & entertainment tech" },
   { img: p12, name: "Home Cameras", detail: "Wi-Fi security & smart-home gear" },
+  { img: p13, name: "Smart Watches", detail: "Doro watches with health & activity tracking" },
+  { img: p14, name: "High-Power Car Chargers", detail: "48W dual-port metal chargers" },
+  { img: p15, name: "Wireless Earbuds", detail: "Open-ear true wireless headsets" },
+  { img: p16, name: "Multi-Tip Car Chargers", detail: "Lightning, Micro USB & USB-C in one" },
+  { img: p17, name: "Selfie Sticks & Tripods", detail: "Mini live broadcast stands" },
+  { img: p18, name: "Bluetooth Speakers", detail: "Compact colourful BT speakers" },
 ];
 
 const reviews = [
