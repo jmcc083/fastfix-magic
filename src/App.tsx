@@ -37,6 +37,7 @@ const PHONE = "+353858734871";
 const PHONE_DISPLAY = "085 873 4871";
 const LANDLINE_DISPLAY = "047 52594";
 const FACEBOOK = "https://www.facebook.com/clonestech/";
+const GOOGLE_MAPS = "https://www.google.com/maps/search/?api=1&query=The+Diamond%2C+Clones%2C+H23+W181";
 
 const assetUrl = (asset: { url: string }) =>
   asset.url.startsWith("http") ? asset.url : `https://fastfix-magic.lovable.app${asset.url}`;
@@ -416,9 +417,9 @@ export default function App() {
               <div className="mb-7 space-y-3 text-sm">
                 <a href={`tel:${PHONE}`} className="flex items-center gap-3 font-semibold hover:text-brand-dark"><span className="flex size-9 items-center justify-center rounded-full bg-background"><Phone className="size-4" /></span>{PHONE_DISPLAY} <span className="font-normal text-muted-foreground">· {LANDLINE_DISPLAY}</span></a>
                 <a href="mailto:clonestech@gmail.com" className="flex items-center gap-3 hover:text-brand-dark"><span className="flex size-9 items-center justify-center rounded-full bg-background">@</span>clonestech@gmail.com</a>
-                <div className="flex items-center gap-3"><span className="flex size-9 items-center justify-center rounded-full bg-background"><MapPin className="size-4" /></span>The Diamond, Clones, H23 W181</div>
+                <a href={GOOGLE_MAPS} target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-brand-dark"><span className="flex size-9 items-center justify-center rounded-full bg-background"><MapPin className="size-4" /></span>The Diamond, Clones, H23 W181</a>
               </div>
-              <div className="flex flex-col gap-3 sm:flex-row"><a href={`tel:${PHONE}`} className={btnPrimary}>Call the shop</a><a href={FACEBOOK} target="_blank" rel="noreferrer" className={btnOutline}>Facebook <ArrowRight className="size-4" /></a></div>
+              <div className="flex flex-col gap-3 sm:flex-row"><a href={`tel:${PHONE}`} className={btnPrimary}>Call the shop</a><a href={GOOGLE_MAPS} target="_blank" rel="noreferrer" className={btnOutline}><MapPin className="size-4" /> Get directions</a><a href={FACEBOOK} target="_blank" rel="noreferrer" className={btnOutline}>Facebook <ArrowRight className="size-4" /></a></div>
             </FadeIn>
           </div>
         </section>
@@ -440,7 +441,7 @@ export default function App() {
           <div className="grid gap-10 md:grid-cols-[1.35fr_1fr_1fr]">
             <div><div className="mb-4 flex items-center gap-2.5 font-display text-xl font-bold"><img src={assetUrl(logo)} alt="Clones Tech Repair" className="size-9 rounded-md"/>CLONES<span className="text-brand">TECH</span></div><p className="max-w-[420px] text-sm leading-6 text-muted-foreground">Local tech repair, device sales and accessories in The Diamond, Clones. Friendly help for the tech you rely on every day.</p></div>
             <div><h3 className="mb-4 font-sans text-sm font-semibold">Contact</h3><a href={`tel:${PHONE}`} className="mb-2 block text-sm text-muted-foreground hover:text-brand-dark">{PHONE_DISPLAY}</a><p className="mb-2 text-sm text-muted-foreground">{LANDLINE_DISPLAY}</p><a href="mailto:clonestech@gmail.com" className="block text-sm text-muted-foreground hover:text-brand-dark">clonestech@gmail.com</a></div>
-            <div><h3 className="mb-4 font-sans text-sm font-semibold">Find us</h3><p className="mb-3 text-sm leading-6 text-muted-foreground">The Diamond<br/>Clones, Co. Monaghan<br/>H23 W181</p><a href={FACEBOOK} target="_blank" rel="noreferrer" className="text-sm font-semibold text-brand-dark">Facebook →</a></div>
+            <div><h3 className="mb-4 font-sans text-sm font-semibold">Find us</h3><p className="mb-3 text-sm leading-6 text-muted-foreground">The Diamond<br/>Clones, Co. Monaghan<br/>H23 W181</p><a href={GOOGLE_MAPS} target="_blank" rel="noreferrer" className="mb-2 block text-sm font-semibold text-brand-dark">Get directions →</a><a href={FACEBOOK} target="_blank" rel="noreferrer" className="text-sm font-semibold text-brand-dark">Facebook →</a></div>
           </div>
           <div className="mt-10 flex flex-wrap justify-between gap-3 border-t border-border pt-5 text-xs text-muted-foreground"><p>© 2026 Clones Tech Repair.</p><p>Fast. Fair. Local.</p></div>
         </div>
