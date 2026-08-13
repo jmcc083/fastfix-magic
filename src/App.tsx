@@ -37,6 +37,7 @@ const PHONE = "+353858734871";
 const PHONE_DISPLAY = "085 873 4871";
 const LANDLINE_DISPLAY = "047 52594";
 const FACEBOOK = "https://www.facebook.com/clonestech/";
+const GOOGLE_MAPS = "https://www.google.com/maps/search/?api=1&query=The+Diamond%2C+Clones%2C+H23+W181";
 
 const assetUrl = (asset: { url: string }) =>
   asset.url.startsWith("http") ? asset.url : `https://fastfix-magic.lovable.app${asset.url}`;
