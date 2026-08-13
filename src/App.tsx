@@ -417,9 +417,9 @@ export default function App() {
               <div className="mb-7 space-y-3 text-sm">
                 <a href={`tel:${PHONE}`} className="flex items-center gap-3 font-semibold hover:text-brand-dark"><span className="flex size-9 items-center justify-center rounded-full bg-background"><Phone className="size-4" /></span>{PHONE_DISPLAY} <span className="font-normal text-muted-foreground">· {LANDLINE_DISPLAY}</span></a>
                 <a href="mailto:clonestech@gmail.com" className="flex items-center gap-3 hover:text-brand-dark"><span className="flex size-9 items-center justify-center rounded-full bg-background">@</span>clonestech@gmail.com</a>
-                <div className="flex items-center gap-3"><span className="flex size-9 items-center justify-center rounded-full bg-background"><MapPin className="size-4" /></span>The Diamond, Clones, H23 W181</div>
+                <a href={GOOGLE_MAPS} target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-brand-dark"><span className="flex size-9 items-center justify-center rounded-full bg-background"><MapPin className="size-4" /></span>The Diamond, Clones, H23 W181</a>
               </div>
-              <div className="flex flex-col gap-3 sm:flex-row"><a href={`tel:${PHONE}`} className={btnPrimary}>Call the shop</a><a href={FACEBOOK} target="_blank" rel="noreferrer" className={btnOutline}>Facebook <ArrowRight className="size-4" /></a></div>
+              <div className="flex flex-col gap-3 sm:flex-row"><a href={`tel:${PHONE}`} className={btnPrimary}>Call the shop</a><a href={GOOGLE_MAPS} target="_blank" rel="noreferrer" className={btnOutline}><MapPin className="size-4" /> Get directions</a><a href={FACEBOOK} target="_blank" rel="noreferrer" className={btnOutline}>Facebook <ArrowRight className="size-4" /></a></div>
             </FadeIn>
           </div>
         </section>
